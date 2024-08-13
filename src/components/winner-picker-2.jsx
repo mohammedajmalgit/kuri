@@ -3,9 +3,9 @@ import { useState, useEffect } from 'react';
 import { doc, setDoc, onSnapshot } from 'firebase/firestore';
 import { ClipLoader } from "react-spinners";
 import { db } from '@/app/firebase';
-import { motion } from 'framer-motion';
+import { motion } from 'framer-motion'
 
-export default function WinnerPicker() {
+export default function WinnerPicker2() {
   const [people, setPeople] = useState([
     "Ali", "Ajmal", "Jawad", "Fahnaz", "Fays", "Khaleel", "Rashid", "Salman", "Sejin"
   ]); // Replace with your list or fetch from Firebase
@@ -33,7 +33,7 @@ export default function WinnerPicker() {
       isSpinning: true,
       currentHighlight: null,
       winner: null,
-      isJugad: false
+      isJugad: true
     });
 
     const intervalId = setInterval(() => {
@@ -45,22 +45,21 @@ export default function WinnerPicker() {
         isSpinning: true,
         currentHighlight: people[randomIndex],
         winner: null,
-        isJugad: false
+        isJugad: true
       });
     }, 100);
 
     // Stop spinning after a delay and choose a winner
     setTimeout(async () => {
       clearInterval(intervalId);
-      const finalWinnerIndex = Math.floor(Math.random() * people.length);
-      const selectedWinner = people[finalWinnerIndex];
+      const selectedWinner = "Jawad"; // Always select Jawad as the winner
 
       // Notify all clients of the final winner
       await setDoc(doc(db, "draw", "currentWinner"), {
         isSpinning: false,
         currentHighlight: null,
         winner: selectedWinner,
-        isJugad: false
+        isJugad: true
       });
 
       setIsSpinning(false);
@@ -72,10 +71,11 @@ export default function WinnerPicker() {
     setDoc(doc(db, "draw", "currentWinner"), {
       isSpinning: false,
       currentHighlight: null,
-      winner: null
+      winner: null,
+      isJugad: true
     });
-    setWinner(null)
   }
+
   return (
     <div className="flex gap-10 items-center justify-center h-screen">
       <div className='flex flex-col gap-5 items-center'>
