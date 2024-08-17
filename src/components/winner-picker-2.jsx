@@ -82,13 +82,13 @@ export default function WinnerPicker2() {
   }
 
   return (
-    <div className="flex gap-10 items-center justify-center h-screen">
+    <div className="flex gap-10 items-center justify-center h-screen container mx-auto px-[5%]">
       <div className='flex flex-col gap-5 items-center'>
-        <motion.ul className='flex gap-2 bg-[#A6A6A6] bg-opacity-70 rounded-full px-[20px]'>
+        <motion.ul className='flex flex-wrap gap-2 bg-[#A6A6A6] bg-opacity-70 rounded-full p-[20px]'>
           {people.map((person, id) => (
             <motion.li
               key={id}
-              className="px-2 py-1 text-lg font-semibold"
+              className="px-2 py-1 text-[12px] md:text-lg font-semibold"
               animate={{
                 scale: winner === person ? 1.5 : 1,
                 color: winner === person ? '#ff0000' : '#000000',
@@ -105,9 +105,8 @@ export default function WinnerPicker2() {
             </motion.li>
           ))}
         </motion.ul>
-
         <>
-          <div className="w-80 h-80 flex items-center justify-center bg-yellow-500 rounded-full mt-[50px]">
+          <div className="w-80 h-80 flex items-center justify-center bg-yellow-500 rounded-full md:mt-[50px]">
             <p className="text-3xl font-bold">{winner || currentHighlight || "?"}</p>
           </div>
           {!winner ? (
