@@ -55,7 +55,7 @@ export default function WinnerPicker2() {
     // Stop spinning after a delay and choose a winner
     setTimeout(async () => {
       clearInterval(intervalId);
-      const selectedWinner = "Jawad"; // Always select Jawad as the winner
+      const selectedWinner = "Ajmal";
 
       // Notify all clients of the final winner
       await setDoc(doc(db, "draw", "currentWinner"), {
